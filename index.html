@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>阿鼻不要生氣券</title>
+  <style>
+    body {{
+      font-family: "微軟正黑體", sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      border: 2px dashed #666;
+      border-radius: 10px;
+      margin-top: 40px;
+    }}
+    h1 {{
+      color: #e74c3c;
+    }}
+    .serial {{
+      margin-top: 10px;
+      font-weight: bold;
+      color: #555;
+    }}
+    button {{
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      margin-top: 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }}
+    .success {{
+      font-size: 22px;
+      color: #27ae60;
+      margin-top: 30px;
+      font-weight: bold;
+    }}
+  </style>
+</head>
+<body>
+  <h1>阿鼻不要生氣券</h1>
+  <p>有效期限：2026/07/31</p>
+  <p>出示本畫面使用</p>
+  <div class="serial">序號：<span id="serialNum"></span></div>
+  <button id="redeemBtn">兌換</button>
+  <div id="message"></div>
+
+  <script>
+    const btn = document.getElementById("redeemBtn");
+    const messageDiv = document.getElementById("message");
+    const serialSpan = document.getElementById("serialNum");
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id") || "00";
+    serialSpan.textContent = "#" + id;
+
+    btn.addEventListener("click", () => {{
+      btn.style.display = "none";
+      messageDiv.textContent = "兌換成功 🎉";
+      messageDiv.classList.add("success");
+    }});
+  </script>
+</body>
+</html>
